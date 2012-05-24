@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault>
+      <w:rPr>
+        <w:rFonts w:asciiTheme="minorHAnsi" w:eastAsiaTheme="minorHAnsi" w:hAnsiTheme="minorHAnsi" w:cstheme="minorBidi"/>
+        <w:sz w:val="24"/>
+        <w:szCs w:val="24"/>
+        <w:lang w:val="en-US" w:eastAsia="en-US" w:bidi="ar-SA"/>
+      </w:rPr>
+    </w:rPrDefault>
+    <w:pPrDefault/>
+  </w:docDefaults>
+  <w:latentStyles w:defLockedState="0" w:defUIPriority="0" w:defSemiHidden="0" w:defUnhideWhenUsed="0" w:defQFormat="0" w:count="276"/>
+  <w:style w:type="paragraph" w:default="1" w:styleId="Normal">
+    <w:name w:val="Normal"/>
+    <w:qFormat/>
+    <w:rPr>
+      <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="paragraph" w:styleId="Heading1">
+    <w:name w:val="heading 1"/>
+    <w:basedOn w:val="Normal"/>
+    <w:next w:val="Normal"/>
+    <w:link w:val="Heading1Char"/>
+    <w:pPr>
+      <w:keepNext/>
+      <w:keepLines/>
+      <w:spacing w:before="480"/>
+      <w:outlineLvl w:val="0"/>
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:b/>
+      <w:bCs/>
+      <w:color w:val="345A8A" w:themeColor="accent1" w:themeShade="B5"/>
+      <w:sz w:val="32"/>
+      <w:szCs w:val="32"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="paragraph" w:styleId="Heading2">
+    <w:name w:val="heading 2"/>
+    <w:basedOn w:val="Normal"/>
+    <w:next w:val="Normal"/>
+    <w:link w:val="Heading2Char"/>
+    <w:pPr>
+      <w:keepNext/>
+      <w:keepLines/>
+      <w:spacing w:before="200"/>
+      <w:outlineLvl w:val="1"/>
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:b/>
+      <w:bCs/>
+      <w:color w:val="4F81BD" w:themeColor="accent1"/>
+      <w:sz w:val="26"/>
+      <w:szCs w:val="26"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="character" w:default="1" w:styleId="DefaultParagraphFont">
+    <w:name w:val="Default Paragraph Font"/>
+    <w:semiHidden/>
+    <w:unhideWhenUsed/>
+  </w:style>
+  <w:style w:type="table" w:default="1" w:styleId="TableNormal">
+    <w:name w:val="Normal Table"/>
+    <w:semiHidden/>
+    <w:unhideWhenUsed/>
+    <w:qFormat/>
+    <w:tblPr>
+      <w:tblInd w:w="0" w:type="dxa"/>
+      <w:tblCellMar>
+        <w:top w:w="0" w:type="dxa"/>
+        <w:left w:w="108" w:type="dxa"/>
+        <w:bottom w:w="0" w:type="dxa"/>
+        <w:right w:w="108" w:type="dxa"/>
+      </w:tblCellMar>
+    </w:tblPr>
+  </w:style>
+  <w:style w:type="numbering" w:default="1" w:styleId="NoList">
+    <w:name w:val="No List"/>
+    <w:semiHidden/>
+    <w:unhideWhenUsed/>
+  </w:style>
+  <w:style w:type="character" w:customStyle="1" w:styleId="Heading2Char">
+    <w:name w:val="Heading 2 Char"/>
+    <w:basedOn w:val="DefaultParagraphFont"/>
+    <w:link w:val="Heading2"/>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:b/>
+      <w:bCs/>
+      <w:color w:val="4F81BD" w:themeColor="accent1"/>
+      <w:sz w:val="26"/>
+      <w:szCs w:val="26"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="character" w:customStyle="1" w:styleId="Heading1Char">
+    <w:name w:val="Heading 1 Char"/>
+    <w:basedOn w:val="DefaultParagraphFont"/>
+    <w:link w:val="Heading1"/>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:b/>
+      <w:bCs/>
+      <w:color w:val="345A8A" w:themeColor="accent1" w:themeShade="B5"/>
+      <w:sz w:val="32"/>
+      <w:szCs w:val="32"/>
+    </w:rPr>
+  </w:style>
+</w:styles>
+
