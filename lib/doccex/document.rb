@@ -38,7 +38,7 @@ class Doccex::Document
     FileUtils.cd(dir) do
       system "zip -qr #{tmp_file} . -x \*.DS_Store \*.git/\* \*.gitignore \*.gitkeep"
     end
-    cleanup(dir)
+    #cleanup(dir)
   end
 
   def read_zipfile

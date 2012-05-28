@@ -21,15 +21,17 @@ class Doccex::Rels
 
 
   OTHER_RELATIONSHIPS = { :footer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer", :target => "footer1.xml"},
-                          :printer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings", :target => "printerSettings/printerSettingsINDEX.bin"} }
+                          :printer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings", :target => "printerSettings/printerSettingsINDEX.bin"},
+                          :image => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image", :target => "media/imageINDEX.png"} }
 
   def initialize
-    @relationships = BASIC_RELATIONSHIPS
+    @relationships = BASIC_RELATIONSHIPS.dup
     @printer_index = 1
+    @image_index = 0
   end
 
   def next_id(type)
-    new_id = relationships.map{|r| r[:id]}.last.next
+    new_id = "rId" + relationships.map{|r| r[:id]}.last.match(/\d+/)[0].next
     new_rel = OTHER_RELATIONSHIPS[type]
     if type == :footer
       @relationships << {:id => new_id, :type => new_rel[:type], :target => new_rel[:target]}
@@ -39,8 +41,17 @@ class Doccex::Rels
       @relationships << {:id => new_id, :type => new_rel[:type], :target => target}
       copy_printerSettings
       @printer_index += 1
+    elsif type == :image
+      @image_index += 1
+      target = new_rel[:target].dup.gsub!(/INDEX/,@image_index.to_s)
+      @relationships << {:id => new_id, :type => new_rel[:type], :target => target}
+      return [new_id, @image_index]
     end
     new_id
+  end
+
+  def next_image_index
+    @image_index
   end
 
   def copy_printerSettings
