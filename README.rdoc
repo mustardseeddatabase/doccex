@@ -1,3 +1,7 @@
 = Doccex
 
-This project rocks and uses MIT-LICENSE.
+Very lightweight Rails engine to produce MSWord documents from a Rails application.
+
+== License
+
+MIT-LICENSE
