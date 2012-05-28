@@ -7,11 +7,11 @@ require "doccex/version"
 Gem::Specification.new do |s|
   s.name        = "doccex"
   s.version     = Doccex::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Doccex."
-  s.description = "TODO: Description of Doccex."
+  s.authors     = ["Les Nightingill"]
+  s.email       = ["info@mustardseeddatabase.org"]
+  s.homepage    = "www.mustardseeddatabase.org"
+  s.summary     = "Lightweight Rails engine to emit MSWord documents"
+  s.description = "Mounts as an engine in a Rails application"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
