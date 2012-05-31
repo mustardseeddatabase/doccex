@@ -10,10 +10,6 @@ class Doccex::Document
     File.open(Rails.application.root.join('tmp/docx/word/document.xml'), 'w') {|file| file.write(string)}
   end
 
-  def footer(string)
-    File.open(Rails.application.root.join('tmp/docx/word/footer1.xml'), 'w') {|file| file.write(string)}
-  end
-
   def tmp_file
     Rails.application.root.join('tmp/tmp_file.docx')
   end
@@ -38,7 +34,7 @@ class Doccex::Document
     FileUtils.cd(dir) do
       system "zip -qr #{tmp_file} . -x \*.DS_Store \*.git/\* \*.gitignore \*.gitkeep"
     end
-    #cleanup(dir)
+    cleanup(dir)
   end
 
   def read_zipfile

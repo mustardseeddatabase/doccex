@@ -7,4 +7,7 @@ module Doccex
   require 'doccex/renderer'
   require 'doccex/document'
   require 'doccex/rels'
+  require 'doccex/page_elements'
 end
+
+Footer = Doccex::PageElements::Footer

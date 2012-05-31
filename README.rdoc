@@ -2,6 +2,16 @@
 
 Very lightweight Rails engine to produce MSWord documents from a Rails application.
 
+= Adding a new page element
+
+If you wish to add a new page element object. Do the following:
+
+Add a view helper in app/helpers/doccex_helper.rb. These helpers are available in the host Rails applications views to render page elements.
+
+Define the class in a new file, included in lib/doccex/page_elements/. The class should inherit from String and instantiating the class should produce an xml string for inclusion in the page builder buffer.
+
+Include any partials that might be needed for the new class in app/views/doccex.
+
 == License
 
 MIT-LICENSE

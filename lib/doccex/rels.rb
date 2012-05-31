@@ -22,7 +22,7 @@ class Doccex::Rels
 
   OTHER_RELATIONSHIPS = { :footer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer", :target => "footer1.xml"},
                           :printer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings", :target => "printerSettings/printerSettingsINDEX.bin"},
-                          :image => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image", :target => "media/imageINDEX.png"} }
+                          :image => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"} }
 
   def initialize
     @relationships = BASIC_RELATIONSHIPS.dup
@@ -30,7 +30,7 @@ class Doccex::Rels
     @image_index = 0
   end
 
-  def next_id(type)
+  def next_id(type, *args)
     new_id = "rId" + relationships.map{|r| r[:id]}.last.match(/\d+/)[0].next
     new_rel = OTHER_RELATIONSHIPS[type]
     if type == :footer
@@ -43,9 +43,8 @@ class Doccex::Rels
       @printer_index += 1
     elsif type == :image
       @image_index += 1
-      target = new_rel[:target].dup.gsub!(/INDEX/,@image_index.to_s)
+      target = Rails.root.join(args[0]).to_s.match(/media.*/)[0]
       @relationships << {:id => new_id, :type => new_rel[:type], :target => target}
-      return [new_id, @image_index]
     end
     new_id
   end
