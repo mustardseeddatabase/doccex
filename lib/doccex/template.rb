@@ -9,8 +9,9 @@ class Doccex::Template < Doccex::Base
   end
 
   def create_template(template)
-    FileUtils.cp_r(Rails.application.root.join("app", template), Rails.application.root.join('tmp'))
-    temp = template.split("/")[1]
+    src = Pathname(template).absolute? ? template : Rails.application.root.join("app", template)
+    FileUtils.cp_r(src , Rails.application.root.join('tmp'))
+    temp = template.split("/")[-1]
     FileUtils.mv("tmp/#{temp}","tmp/docx", :force => true)
   end
 
