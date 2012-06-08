@@ -15,7 +15,6 @@
   <w:style w:type="paragraph" w:default="1" w:styleId="Normal">
     <w:name w:val="Normal"/>
     <w:qFormat/>
-    <w:rsid w:val="004619A8"/>
     <w:rPr>
       <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
     </w:rPr>
@@ -25,7 +24,6 @@
     <w:basedOn w:val="Normal"/>
     <w:next w:val="Normal"/>
     <w:link w:val="Heading1Char"/>
-    <w:rsid w:val="007B0AAB"/>
     <w:pPr>
       <w:keepNext/>
       <w:keepLines/>
@@ -46,7 +44,6 @@
     <w:basedOn w:val="Normal"/>
     <w:next w:val="Normal"/>
     <w:link w:val="Heading2Char"/>
-    <w:rsid w:val="00FC1487"/>
     <w:pPr>
       <w:keepNext/>
       <w:keepLines/>
@@ -91,7 +88,6 @@
     <w:name w:val="Heading 2 Char"/>
     <w:basedOn w:val="DefaultParagraphFont"/>
     <w:link w:val="Heading2"/>
-    <w:rsid w:val="00FC1487"/>
     <w:rPr>
       <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
       <w:b/>
@@ -105,7 +101,6 @@
     <w:name w:val="Heading 1 Char"/>
     <w:basedOn w:val="DefaultParagraphFont"/>
     <w:link w:val="Heading1"/>
-    <w:rsid w:val="007B0AAB"/>
     <w:rPr>
       <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
       <w:b/>

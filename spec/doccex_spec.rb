@@ -33,7 +33,7 @@ describe "Doccex::Document instance methods" do
         File.exists?(dir).should be_true
         File.directory?(dir).should be_true
       end
-      [Rails.application.root.join("tmp/docx/[Content_Types].xml"), Rails.application.root.join("tmp/docx/word/document.xml"), Rails.application.root.join("tmp/docx/word/fontTable.xml"), Rails.application.root.join("tmp/docx/word/settings.xml"), Rails.application.root.join("tmp/docx/word/styles.xml"), Rails.application.root.join("tmp/docx/word/webSettings.xml")].each do |file|
+      [Rails.application.root.join("tmp/docx/[Content_Types].xml"), Rails.application.root.join("tmp/docx/word/fontTable.xml"), Rails.application.root.join("tmp/docx/word/settings.xml"), Rails.application.root.join("tmp/docx/word/styles.xml"), Rails.application.root.join("tmp/docx/word/webSettings.xml")].each do |file|
         File.exists?(file).should be_true
         File.file?(file).should be_true
       end
@@ -70,16 +70,6 @@ describe "Doccex::Document instance methods" do
     end
   end
 
-  describe "#footer method" do
-    it "creates the footer1.xml file in the document filesystem" do
-      doc = Doccex::Document.new({})
-      doc.create_template
-      footer = "<bish><bash><bosh>Kablooie</bosh></bash></bish>"
-      doc.footer footer
-      File.exists?(Rails.application.root.join("tmp/docx/word/footer1.xml")).should be_true
-      File.read(Rails.application.root.join("tmp/docx/word/footer1.xml")).should == footer
-    end
-  end
 end
 
 describe "Doccex::Rels" do
@@ -108,7 +98,7 @@ describe "Doccex::Rels" do
   describe "render_to_string method" do
     it "should create a string of rels file xml contents" do
       rel = Doccex::Rels.new
-      rel.render_to_string.should == <<-REL
+      string = <<-REL
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
@@ -118,6 +108,7 @@ describe "Doccex::Rels" do
   <Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="theme/theme1.xml"/>
 </Relationships>
       REL
+      rel.render_to_string.should == string.gsub(/\n(\s+)?/,'') # the result has whitespace removed!
     end
   end
 

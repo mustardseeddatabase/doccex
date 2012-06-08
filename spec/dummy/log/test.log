@@ -1620,3 +1620,191 @@ Rendered test/index.haml (1.7ms)
 Rendered text template (0.0ms)
 Sent data test_doc.docx (7.7ms)
 Completed 200 OK in 49ms (Views: 49.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 13:19:47 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.0ms)
+Completed 200 OK in 98ms (Views: 97.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 13:19:47 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (1.8ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (15.3ms)
+Completed 200 OK in 279ms (Views: 278.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 13:23:58 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (1.9ms)
+Completed 200 OK in 17ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 13:23:58 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (1.7ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (7.7ms)
+Completed 200 OK in 49ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 14:21:35 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (1.9ms)
+Completed 200 OK in 62ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 14:21:35 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (1.7ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (66.2ms)
+Completed 200 OK in 111ms (Views: 110.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 14:21:44 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.9ms)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 14:21:45 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (3.0ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (6.7ms)
+Completed 200 OK in 60ms (Views: 59.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 14:22:05 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.9ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 14:22:05 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (2.7ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (7.9ms)
+Completed 200 OK in 58ms (Views: 57.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 14:23:00 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.8ms)
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 14:23:00 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (2.9ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (6.4ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 15:58:18 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.9ms)
+Completed 200 OK in 47ms (Views: 46.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 15:58:18 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (2.7ms)
+Rendered text template (0.1ms)
+Sent data test_doc.docx (7.2ms)
+Completed 200 OK in 124ms (Views: 123.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 15:59:21 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.9ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 15:59:21 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (3.2ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (7.3ms)
+Completed 200 OK in 58ms (Views: 57.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 16:02:55 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.8ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 16:02:56 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (2.9ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (7.0ms)
+Completed 200 OK in 58ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 16:05:18 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (2.9ms)
+Completed 200 OK in 22ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 16:05:18 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (3.0ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (7.4ms)
+Completed 200 OK in 162ms (Views: 161.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 16:10:05 -0700
+  Processing by TestController#index as HTML
+Rendered test/index.haml within layouts/application (1.9ms)
+Completed 200 OK in 61ms (Views: 60.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 16:10:05 -0700
+  Processing by TestController#index as DOCX
+Rendered test/index.haml (1.7ms)
+Rendered text template (0.0ms)
+Sent data test_doc.docx (66.1ms)
+Completed 200 OK in 106ms (Views: 106.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+
+
+Started GET "/test.html" for 127.0.0.1 at 2012-06-08 16:12:19 -0700
+Processing by TestController#index as HTML
+  Rendered test/index.haml within layouts/application (1.9ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test.docx" for 127.0.0.1 at 2012-06-08 16:12:19 -0700
+Processing by TestController#index as DOCX
+  Rendered test/index.haml (1.7ms)
+  Rendered text template (0.0ms)
+Sent data test_doc.docx (6.6ms)
+Completed 200 OK in 58ms (Views: 57.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
