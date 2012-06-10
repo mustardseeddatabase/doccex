@@ -12,6 +12,7 @@ class Doccex::Template < Doccex::Base
     src = Pathname(template).absolute? ? template : Rails.application.root.join("app", template)
     FileUtils.cp_r(src , Rails.application.root.join('tmp'))
     temp = template.split("/")[-1]
+    FileUtils.rm_r("tmp/docx") if File.exists?("tmp/docx")
     FileUtils.mv("tmp/#{temp}","tmp/docx", :force => true)
   end
 
