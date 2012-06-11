@@ -5,8 +5,8 @@ class Doccex::PageElements::Table < String
     cols       = options[:cols] # an array of hashes, each representing a column, with width provided in twips values so [{:twips = > 2883},{:twips = > 3330}]
     row        = options[:row]
     rows = collection.inject("") do |str,collection_item|
-      str += context.render(:partial => 'doccex/table_row.xml.builder', :locals => {:obj_name => obj_name, :obj => collection_item, :row => row, :cols => cols})
+      str += context.render(:partial => 'doccex/table_row', :formats => [:xml], :locals => {:obj_name => obj_name, :obj => collection_item, :row => row, :cols => cols})
     end
-    super context.render(:partial => 'doccex/table.xml', :locals => {:rows => rows, :cols => cols})
+    super context.render(:partial => 'doccex/table', :formats => [:xml], :locals => {:rows => rows, :cols => cols})
   end
 end
