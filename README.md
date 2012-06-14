@@ -28,9 +28,9 @@ I have found it helpful to actually insert erb tags and ruby variables into the 
 
 It is most definitely outside the scope here to provide a guide on the structure of the document.xml document, but the main points are:
 
-  * Text elements are defined by a nested set of paragraph (<w:p>), run (<w:r>) and text (<w:t>) xml tags.
+  * Text elements are defined by a nested set of paragraph (`<w:p>`), run (`<w:r>`) and text (`<w:t>`) xml tags.
 
-  * Tables are structures similar to html tables with a nested set of table (<w:tbl>), row (<w:tr>) and cell (<w:tc>) xml tags.
+  * Tables are structures similar to html tables with a nested set of table (`<w:tbl>`), row (`<w:tr>`) and cell (`<w:tc>`) xml tags.
 
 ## The document-build approach
 
