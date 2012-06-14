@@ -1,8 +1,8 @@
-= Doccex
+# Doccex
 
 Very lightweight Rails engine to produce MSWord documents from a Rails application.
 
-= How it works
+# How it works
 
 Doccex implements two strategies for generating MSWord documents. There is a simple template-based strategy with limited flexibility, and a more complicated document build strategy that has much more flexibility.
 
@@ -14,7 +14,7 @@ If you can live with the template-based strategy, your life will be much easier!
 
   * Your document has multiple sections with different footers.
 
-== The template approach
+## The template approach
 
 A single xml file, document.xml, is used as a template for the document. All other files in the collection of files that comprise a .docx file are untouched, just copied from the Doccex template.
 
@@ -32,7 +32,7 @@ It is most definitely outside the scope here to provide a guide on the structure
 
   * Tables are structures similar to html tables with a nested set of table (<w:tbl>), row (<w:tr>) and cell (<w:tc>) xml tags.
 
-== The document-build approach
+## The document-build approach
 
 When a document includes certain elements or features, the document.xml file is not the only one that must be generated. A "rels" or relationships file must also be generated that carries identification information about the elements in the document.xml file, and also links elements to image files and other files.
 
@@ -40,7 +40,7 @@ In this approach, the document.xml file is built using the Builder gem. Consult 
 
 View helpers are included that build page elements by rendering builder partials to strings that are incorporated in the document.xml file.
 
-= Adding a new page element (document build strategy)
+# Adding a new page element (document build strategy)
 
 The first release of Doccex includes the following page elements:
 
@@ -62,13 +62,12 @@ If you wish to add a new page element object. Do the following:
 
 You can study the existing page elements to see how these three components interrelate.
 
-== Rendering a document from the controller
+## Rendering a document from the controller
 
 A document might typically be rendered from a #show method in a controller.
 
-=== Using the template approach
+### Using the template approach
 
-<tt>
     def  show
       @inventory_value = Item.all.map(&:cost).sum
       @cash_balance = Accounts.map(&:balance).sum
@@ -83,7 +82,6 @@ A document might typically be rendered from a #show method in a controller.
         end
       end
     end
-</tt>
 
 Here 'monthly_accounting_report' is the name that will be assigned in the browser when the report is downloaded.
 
@@ -91,11 +89,10 @@ The :template value is the directory in which the template MSWord dcument filesy
 
 The :from_template value signals to Doccex that it should look for the the document.xml file in the template files, interpolate variables in erb tags, zip the filesystem, and send the result to the browser.
 
-=== Using the document-build approach
+### Using the document-build approach
 
 Render the default template:
 
-<tt>
   def show
     @categorized_items = Item.sort_by(&:description).group_by(&:category)
 
@@ -104,11 +101,9 @@ Render the default template:
       format.docx { render :docx => "sku_list"} # renders show.docx.builder
     end
   end
-</tt>
 
 Above, because no template is specified, Rails looks for one with the same name as the action.
 
-<tt>
   def show
     @categorized_items = Item.sort_by(&:description).group_by(&:category)
 
@@ -121,10 +116,9 @@ Above, because no template is specified, Rails looks for one with the same name 
       end
     end
   end
-</tt>
 
 In this case, a template other than the default is specified.
 
-== License
+## License
 
 MIT-LICENSE
