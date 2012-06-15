@@ -177,6 +177,6 @@ When the cell contains an image. Here a Doccex image helper is passed the locati
     xml << image(item.create_barcode_image("tmp/docx/word/media/image#{item.sku}.png"))
 
 
-    ## License
+## License
 
 MIT-LICENSE
