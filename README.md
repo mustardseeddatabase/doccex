@@ -1,12 +1,12 @@
 # Doccex
 
-Very lightweight Rails engine to produce MSWord documents from a Rails application.
+Very lightweight Rails engine to produce MSWord documents from a Rails application. Uses the xml file structure that constitutes a .docx file. (If you're not familiar with this, change the extension of a .docx file to .zip and unzip it).
 
 # How it works
 
-Doccex implements two strategies for generating MSWord documents. There is a simple template-based strategy with limited flexibility, and a more complicated document build strategy that has much more flexibility.
+Doccex implements two alternative strategies for generating MSWord documents. There is a simple template-based strategy with limited flexibility, and a more complicated document build ("builder") strategy that has much more flexibility.
 
-If you can live with the template-based strategy, your life will be much easier! You need to use the document-build strategy if you need to build a rels file representing the contents of your document. This is necessary when:
+If you can live with the template-based strategy, your life will be much easier! You need to use the builder strategy if you need to generate a rels file representing the contents of your document. This is necessary when:
 
   * Your document has multiple sections with different column counts in each.
 
@@ -32,7 +32,7 @@ It is most definitely outside the scope here to provide a guide on the structure
 
   * Tables are structures similar to html tables with a nested set of table (`<w:tbl>`), row (`<w:tr>`) and cell (`<w:tc>`) xml tags.
 
-## The document-build approach
+## The builder approach
 
 When a document includes certain elements or features, the document.xml file is not the only one that must be generated. A "rels" or relationships file must also be generated that carries identification information about the elements in the document.xml file, and also links elements to image files and other files.
 
@@ -40,7 +40,7 @@ In this approach, the document.xml file is built using the Builder gem. Consult 
 
 View helpers are included that build page elements by rendering builder partials to strings that are incorporated in the document.xml file.
 
-# Adding a new page element (document build strategy)
+### Adding a new page element
 
 The first release of Doccex includes the following page elements:
 
@@ -54,7 +54,7 @@ The first release of Doccex includes the following page elements:
 
 If you wish to add a new page element object. Do the following:
 
-  1. Add a view helper in app/helpers/doccex_helper.rb. The helpers n lib/doccex/page_elements are available in the host Rails applications views to render page elements.
+  1. Add a view helper in app/helpers/doccex_helper.rb. The helpers in lib/doccex/page_elements are available in the host Rails applications views to render page elements.
 
   2. Define the class in a new file, included in lib/doccex/page_elements/. The class should inherit from String and instantiating the class should produce an xml string for inclusion in the page builder buffer.
 
@@ -89,36 +89,94 @@ The :template value is the directory in which the template MSWord dcument filesy
 
 The :from_template value signals to Doccex that it should look for the the document.xml file in the template files, interpolate variables in erb tags, zip the filesystem, and send the result to the browser.
 
-### Using the document-build approach
+### Using the builder approach
 
 Render the default template:
 
-  def show
-    @categorized_items = Item.sort_by(&:description).group_by(&:category)
+    def show
+      @categorized_items = Item.sort_by(&:description).group_by(&:category)
 
-    respond_to do |format|
-      format.html
-      format.docx { render :docx => "sku_list"} # renders show.docx.builder
+      respond_to do |format|
+        format.html
+        format.docx { render :docx => "sku_list"} # renders show.docx.builder
+      end
     end
-  end
 
 Above, because no template is specified, Rails looks for one with the same name as the action.
 
-  def show
-    @categorized_items = Item.sort_by(&:description).group_by(&:category)
+    def show
+      @categorized_items = Item.sort_by(&:description).group_by(&:category)
 
-    respond_to do |format|
-      format.html
-      format.docx do
-        render :docx => "sku_list_barcodes",
-               :template => "sku_lists/sku_list_barcodes",
-               :formats => [:xml], :handlers => [:builder]
+      respond_to do |format|
+        format.html
+        format.docx do
+          render :docx => "sku_list_barcodes",
+                 :template => "sku_lists/sku_list_barcodes",
+                 :formats => [:xml], :handlers => [:builder]
+        end
       end
     end
-  end
 
-In this case, a template other than the default is specified.
+In this case, a template other than the default is specified, the filename would be sku_lists/sku_list_barcodes.xml.builder.
 
-## License
+### Builder templates
+
+The Builder gem, at http://builder.rubyforge.org/, has good documentation.
+
+A builder file is pure Ruby. Here is an annotated example:
+
+    xml.instruct! :xml, :standalone => 'yes'
+
+    xml.w :document, document_namespaces do # document_namespaces helper comes from the Doccex engine
+      xml.w :body do
+
+        xml << heading1("SKU List Barcodes")
+        footer = Footer.new(render :partial => 'footer', :formats => [:xml])
+        xml << section_properties(:include_footer => true)
+
+        @categorized_items.sort.each do |category,items|
+          xml << heading2(category)
+          xml << section_properties # section properties are defined _after_ the section to which they pertain. Here we define a single column (default)
+          xml << table( :collection => items,
+                        :obj_name => :item,
+                        :row => {:height => {:twips => 432}, :hRule => 'exact'}, # about 0.3" height
+                        :cols => [ {:align => 'center', :twips => 2886, :cell_contents => 'sku_lists/cell1_contents.xml'},
+                                   {:align => 'right', :twips => 3456, :cell_contents => 'sku_lists/cell2_contents.xml'}])
+          xml << section_properties(:num_cols => 2) # the preceding tables are arranged in two columns
+        end
+
+
+        # the following paragraph and section properties seems to be necessary in order
+        # for MSWord not to append a spurious page
+        xml.w :p do
+          xml.w :pPr
+        end
+        xml.w :sectPr do
+          xml.w :type, "w:val" => "continuous"
+          xml.w :pgSz, "w:w" => "15840", "w:h" => "12240", "w:orient" => "landscape"
+          xml.w :pgMar, "w:top" => "990", "w:right" => "1440", "w:bottom" => "1080", "w:left" => "1440", "w:header" => "708", "w:footer" => "708", "w:gutter" => "0"
+          xml.w :cols, "w:space" => "708"
+        end
+      end
+    end
+
+The helpers are located in app/helpers/doccex/doccex_helper.rb. See the documentation for each of the helpers in lib/doccex/page_elements for descriptions of the arguments.
+
+Cell contents are defined in .xml.builder files in the host application. The following are two examples:
+
+When the cell has string contents (note the nexted paragraph/run/text structure):
+
+    xml.w :p do
+      xml.w :r do
+        xml.w :t, "#{item.description} (#{item.weight_oz} oz)"
+      end
+    end
+
+When the cell contains an image. Here a Doccex image helper is passed the location of an image file. At the same time, a method in the host application has been instructed to place the image inside the media directory of the file structure of the document being prepared.
+
+    xml << image(item.create_barcode_image("tmp/docx/word/media/image#{item.sku}.png"))
+
+
+    ## License
 
 MIT-LICENSE
