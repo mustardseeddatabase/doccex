@@ -13,11 +13,10 @@ Gem::Specification.new do |s|
   s.summary     = "Lightweight Rails engine to emit MSWord documents"
   s.description = "Mounts as an engine in a Rails application"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.2.5"
   s.add_dependency "haml"
-  # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
