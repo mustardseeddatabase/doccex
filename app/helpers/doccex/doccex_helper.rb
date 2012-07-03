@@ -10,6 +10,10 @@ module Doccex
     #
     # Some of page elements also require an associated relationship in the word/_rels/document.xml.rels
     # file. The 'new' method also adds the required relationship, accessed by self.get_instance_variable(:@rels).
+    def title(text)
+      Doccex::PageElements::Title.new(self, text)
+    end
+
     def heading1(text)
       Doccex::PageElements::Heading1.new(self, text)
     end
@@ -36,6 +40,10 @@ module Doccex
 
     def cell(col, obj_name, obj)
       Doccex::PageElements::Cell.new(self, col, obj_name, obj)
+    end
+
+    def header_cell(string, col)
+      Doccex::PageElements::HeaderCell.new(self, string, col)
     end
   end
 end

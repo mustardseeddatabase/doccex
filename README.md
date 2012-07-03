@@ -44,7 +44,7 @@ View helpers are included that build page elements by rendering builder partials
 
 The first release of Doccex includes the following page elements:
 
-  * table, table cell
+  * table, header row, table cell
   * level 1 heading
   * level 2 heading
   * footer
@@ -139,6 +139,7 @@ A builder file is pure Ruby. Here is an annotated example:
           xml << section_properties # section properties are defined _after_ the section to which they pertain. Here we define a single column (default)
           xml << table( :collection => items,
                         :obj_name => :item,
+                        :header_row => ["category", "count"],
                         :row => {:height => {:twips => 432}, :hRule => 'exact'}, # about 0.3" height
                         :cols => [ {:align => 'center', :twips => 2886, :cell_contents => 'sku_lists/cell1_contents.xml'},
                                    {:align => 'right', :twips => 3456, :cell_contents => 'sku_lists/cell2_contents.xml'}])

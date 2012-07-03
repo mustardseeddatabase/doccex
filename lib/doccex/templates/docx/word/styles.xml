@@ -84,6 +84,29 @@
     <w:semiHidden/>
     <w:unhideWhenUsed/>
   </w:style>
+  <w:style w:type="table" w:styleId="TableGrid">
+    <w:name w:val="Table Grid"/>
+    <w:basedOn w:val="TableNormal"/>
+    <w:uiPriority w:val="59"/>
+    <w:rsid w:val="00B43C7D"/>
+    <w:tblPr>
+      <w:tblInd w:w="0" w:type="dxa"/>
+      <w:tblBorders>
+        <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+        <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+        <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+        <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+        <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+        <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+      </w:tblBorders>
+      <w:tblCellMar>
+        <w:top w:w="0" w:type="dxa"/>
+        <w:left w:w="108" w:type="dxa"/>
+        <w:bottom w:w="0" w:type="dxa"/>
+        <w:right w:w="108" w:type="dxa"/>
+      </w:tblCellMar>
+    </w:tblPr>
+  </w:style>
   <w:style w:type="character" w:customStyle="1" w:styleId="Heading2Char">
     <w:name w:val="Heading 2 Char"/>
     <w:basedOn w:val="DefaultParagraphFont"/>
@@ -108,6 +131,45 @@
       <w:color w:val="345A8A" w:themeColor="accent1" w:themeShade="B5"/>
       <w:sz w:val="32"/>
       <w:szCs w:val="32"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="paragraph" w:styleId="Title">
+    <w:name w:val="Title"/>
+    <w:basedOn w:val="Normal"/>
+    <w:next w:val="Normal"/>
+    <w:link w:val="TitleChar"/>
+    <w:uiPriority w:val="10"/>
+    <w:qFormat/>
+    <w:rsid w:val="0086597D"/>
+    <w:pPr>
+      <w:pBdr>
+        <w:bottom w:val="single" w:sz="8" w:space="4" w:color="4F81BD" w:themeColor="accent1"/>
+      </w:pBdr>
+      <w:spacing w:after="300"/>
+      <w:contextualSpacing/>
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:color w:val="17365D" w:themeColor="text2" w:themeShade="BF"/>
+      <w:spacing w:val="5"/>
+      <w:kern w:val="28"/>
+      <w:sz w:val="52"/>
+      <w:szCs w:val="52"/>
+    </w:rPr>
+  </w:style>
+  <w:style w:type="character" w:customStyle="1" w:styleId="TitleChar">
+    <w:name w:val="Title Char"/>
+    <w:basedOn w:val="DefaultParagraphFont"/>
+    <w:link w:val="Title"/>
+    <w:uiPriority w:val="10"/>
+    <w:rsid w:val="0086597D"/>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" w:cstheme="majorBidi"/>
+      <w:color w:val="17365D" w:themeColor="text2" w:themeShade="BF"/>
+      <w:spacing w:val="5"/>
+      <w:kern w:val="28"/>
+      <w:sz w:val="52"/>
+      <w:szCs w:val="52"/>
     </w:rPr>
   </w:style>
 </w:styles>
