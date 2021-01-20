@@ -24,9 +24,16 @@ class Doccex::Template < Doccex::Base
   end
 
   def interpolate_variables
-    source = Rails.application.root.join('tmp/docx/word/document.xml')
-    template = ERB.new File.read(source)
-    File.write(source, template.result(binding))
+    ['document', 'header1'].each { |e| interpolate_partial(e)}
+  end
+
+  private
+  def interpolate_partial(name)
+    source = Rails.application.root.join("tmp/docx/word/#{name}.xml")
+    if File.exists?(source)
+      template = ERB.new File.read(source)
+      File.write(source, template.result(binding))
+    end
   end
 
 end
