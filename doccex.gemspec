@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Doccex::VERSION
   s.authors     = ["Les Nightingill"]
   s.email       = ["tbd@tbd.org"]
-  s.homepage    = "There isn't one"
+  s.homepage    = "http://www.tbd.org"
   s.summary     = "Lightweight Rails engine to emit MSWord documents"
   s.description = "Mounts as an engine in a Rails application"
 
@@ -20,6 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rspec-rails", "~> 2.8.1"
 end
