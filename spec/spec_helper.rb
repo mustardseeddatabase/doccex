@@ -3,6 +3,7 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'byebug'
 
 ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 

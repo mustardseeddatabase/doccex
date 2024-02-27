@@ -1,6 +1,7 @@
 class Doccex::Base
   def tmp_file
-    Rails.application.root.join('tmp/tmp_file.docx')
+    tmp_dir.join('tmp_file.docx')
+    #Rails.application.root.join('tmp/tmp_file.docx')
   end
 
   def zip_package(dir)
@@ -12,7 +13,7 @@ class Doccex::Base
 
   def read_zipfile
     string = File.read(tmp_file)
-    cleanup(tmp_file)
+    cleanup(tmp_dir)
     string
   end
 

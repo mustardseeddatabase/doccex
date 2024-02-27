@@ -1,7 +1,7 @@
 require 'builder'
 
 class Doccex::Rels
-  attr_accessor :relationships, :footerReference
+  attr_accessor :relationships, :footerReference, :tmp_dir
 
   BASIC_RELATIONSHIPS = [ { :id => "rId1",
                             :type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles",
@@ -24,7 +24,8 @@ class Doccex::Rels
                           :printer => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings", :target => "printerSettings/printerSettingsINDEX.bin"},
                           :image => {:type => "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"} }
 
-  def initialize
+  def initialize(tmp_dir:)
+    @tmp_dir = tmp_dir
     @relationships = BASIC_RELATIONSHIPS.dup
     @printer_index = 1
     @image_index = 0
@@ -54,7 +55,7 @@ class Doccex::Rels
   end
 
   def copy_printerSettings
-    system "cp #{Rails.application.root.join('tmp/docx/word/printerSettings/printerSettings1.bin')} #{Rails.application.root.join("tmp/docx/word/printerSettings/printerSettings#{@printer_index.to_s}.bin")}"
+    system "cp #{tmp_dir.join('docx/word/printerSettings/printerSettings1.bin')} #{tmp_dir.join("docx/word/printerSettings/printerSettings#{@printer_index.to_s}.bin")}", out: File::NULL, err: File::NULL
   end
 
   def render_to_string
@@ -68,6 +69,6 @@ class Doccex::Rels
   end
 
   def create_file
-    File.open(Rails.application.root.join('tmp/docx/word/_rels/document.xml.rels'),'w'){|f| f.write(render_to_string)}
+    File.open(tmp_dir.join('docx/word/_rels/document.xml.rels'),'w'){|f| f.write(render_to_string)}
   end
 end
