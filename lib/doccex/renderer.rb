@@ -1,6 +1,8 @@
 ActionController::Renderers.add :docx do |filename, options|
   if options[:from_template]
-    doc = Doccex::Template.new(options[:template], view_assigns)
+    tmp_dir = Rails.application.root.join('tmp', SecureRandom.alphanumeric)
+    Dir.mkdir(tmp_dir)
+    doc = Doccex::Template.new(options[:template], view_assigns, tmp_dir: tmp_dir)
   else
     tmp_dir = Rails.application.root.join('tmp', SecureRandom.alphanumeric)
     Dir.mkdir(tmp_dir)

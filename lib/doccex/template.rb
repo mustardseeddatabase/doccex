@@ -32,7 +32,7 @@ class Doccex::Template < Doccex::Base
   private
   def interpolate_partial(name)
     source = tmp_dir.join("docx/word/#{name}.xml")
-    if File.exists?(source)
+    if File.exist?(source)
       template = ERB.new File.read(source)
       File.write(source, template.result(binding))
     end
