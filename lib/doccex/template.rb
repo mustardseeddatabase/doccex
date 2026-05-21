@@ -74,7 +74,28 @@ class Doccex::Template < Doccex::Base
     source = tmp_dir.join("docx/word/#{name}.xml")
     return unless File.exist?(source)
 
-    template = ERB.new File.read(source)
-    File.write(source, template.result(binding))
+    result = ERB.new(File.read(source)).result(binding)
+    File.write(source, sanitize_w_t_elements(result))
+  end
+
+  # OOXML forbids control characters below U+0020 (except TAB) inside <w:t>
+  # elements. ERB templates with expressions on their own lines produce newlines
+  # in the rendered text content. Strip them out so Word can always open the file.
+  #
+  # Two patterns handled:
+  #   <w:t>\n  <%= value %>\n  </w:t>  →  <w:t>value</w:t>
+  #   <w:t xml:space="preserve">   text\n  </w:t>  →  <w:t xml:space="preserve">   text</w:t>
+  def sanitize_w_t_elements(xml)
+    xml.gsub(/<w:t([^>]*)>(.*?)<\/w:t>/m) do
+      attrs = Regexp.last_match(1)
+      text  = Regexp.last_match(2)
+      if text.match?(/[\r\n]/)
+        text = text
+          .sub(/\A[ \t]*\r?\n[ \t]*/, '')   # leading newline + surrounding indent
+          .sub(/\r?\n[ \t]*\z/, '')         # trailing newline + post-newline indent (spaces before \n are kept)
+          .gsub(/[ \t]*\r?\n[ \t]*/, ' ')   # any remaining internal newlines → space
+      end
+      "<w:t#{attrs}>#{text}</w:t>"
+    end
   end
 end
