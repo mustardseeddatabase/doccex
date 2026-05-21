@@ -21,14 +21,17 @@ class Doccex::Template < Doccex::Base
   end
 
   def create_rels
-    extra_components = %w[styles settings webSettings footnotes endnotes header1 footer1 fontTable]
-    extra_components.each do |filename|
+    %w[styles settings webSettings footnotes endnotes header1 footer1].each do |filename|
       rel_type = filename.match(/\D+/)[0].to_sym # e.g. :header from "header1"
-      @rels.create_relationship(rel_type) if File.exist?(tmp_dir.join('docx', 'word',
-                                                                      "#{filename}.xml"))
+      @rels.create_relationship(rel_type) if File.exist?(tmp_dir.join('docx', 'word', "#{filename}.xml"))
     end
+    @rels.create_relationship(:customXml) if File.exist?(tmp_dir.join('docx', 'word', 'ink', 'ink1.xml'))
+    %w[image1.png image2.jpg].each do |img|
+      path = @media_dir.join(img)
+      @rels.next_id(:image, path) if File.exist?(path)
+    end
+    @rels.create_relationship(:fontTable) if File.exist?(tmp_dir.join('docx', 'word', 'fontTable.xml'))
     @rels.create_relationship(:theme) if File.exist?(tmp_dir.join('docx', 'word', 'theme', 'theme1.xml'))
-    @rels.create_relationship(:customXML) if File.exist?(tmp_dir.join('docx', 'word', 'ink', 'ink1.xml'))
   end
 
   def create_image_rels
@@ -62,7 +65,7 @@ class Doccex::Template < Doccex::Base
   end
 
   def interpolate_variables
-    %w[document header1].each { |e| interpolate_partial(e) }
+    %w[document header1 settings].each { |e| interpolate_partial(e) }
   end
 
   private
